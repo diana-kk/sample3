@@ -7,6 +7,7 @@ var Paper = SVG.g();
 //이미지
 var hidari = Paper.image('img/hidari.png', 0, 0, 21, 23).toDefs();
 var migi = Paper.image('img/migi.png', 0, 0, 21, 23).toDefs();
+var direction = Paper.image('img/direction.png', 0, 0, 25, 30).toDefs();
 
 var Library = {
   //SVG 외곽선
@@ -37,6 +38,14 @@ var Library = {
       location.replace('2korean00.html');
     }
 
+    migi.use().transform('t325, 9').appendTo(topBox).click(handlerPre).attr({
+      'cursor': 'pointer'
+    });
+
+    direction.use().transform('t12, 55').appendTo(topBox);
+    topBox.text(43, 78, '같은 수를 세는 방법끼리 짝지어 보세요.').attr({
+      'font-size': 17,
+    });
 
   },
 
@@ -94,13 +103,13 @@ var Library = {
       questions[j].attr({
         'cursor': 'pointer'
       });
-      questions[j].rect(18 + (j % 3) * 110, 65 + Math.floor(j / 3) * 90, 100, 80, 6, 6).attr({
+      questions[j].rect(18 + (j % 3) * 110, 105 + Math.floor(j / 3) * 84, 100, 70, 6, 6).attr({
         'fill': 'white',
         'stroke': '#afdc55',
         'stroke-width': 1.5
       });
-      questions[j].text(67 + (j % 3) * 110, 117 + Math.floor(j / 3) * 90, gameEl[j].text).attr({
-        'font-size': 33,
+      questions[j].text(67 + (j % 3) * 110, 151 + Math.floor(j / 3) * 84, gameEl[j].text).attr({
+        'font-size': 32,
         'text-anchor': 'middle'
       });
       questions[j].data('i', gameEl[j].data);
